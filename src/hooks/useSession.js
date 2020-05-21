@@ -1,12 +1,12 @@
-import { useSelector, shallowEqual } from 'react-redux';
+import { useSelector, shallowEqual } from 'react-redux'
 
 const useSession = () =>
   useSelector(
     ({ session: { authenticated, user } }) => ({
       authenticated,
-      user
+      user,
     }),
     shallowEqual
-  );
+  )
 
-export default useSession;
+export default useSession

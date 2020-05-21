@@ -1,50 +1,50 @@
-import humps from 'humps';
-import { updateSession, logout } from 'state/actions/userActions';
+import humps from 'humps'
+import { updateSession, logout } from 'state/actions/userActions'
 
-const ACCESS_TOKEN = 'access-token';
-const UID = 'uid';
-const CLIENT = 'client';
+const ACCESS_TOKEN = 'access-token'
+const UID = 'uid'
+const CLIENT = 'client'
 
-const UNAUTHORIZED = 401;
+const UNAUTHORIZED = 401
 
 export default (store, client) => {
-  client.interceptors.request.use(config => {
-    const { info } = store.getState().session;
-    const { data, headers } = config;
+  client.interceptors.request.use((config) => {
+    const { info } = store.getState().session
+    const { data, headers } = config
     if (info) {
-      const { token, client, uid } = info;
+      const { token, client, uid } = info
       config.headers = {
         ...headers,
         [ACCESS_TOKEN]: token,
         client,
-        uid
-      };
+        uid,
+      }
     }
-    config.data = data ? humps.decamelizeKeys(data) : {};
-    return config;
-  });
+    config.data = data || {}
+    return config
+  })
 
   client.interceptors.response.use(
-    async response => {
-      const { headers, data } = response;
-      const token = headers[ACCESS_TOKEN];
+    async (response) => {
+      const { headers, data } = response
+      const token = headers[ACCESS_TOKEN]
       if (token) {
         const session = {
           token,
           uid: headers[UID],
-          client: headers[CLIENT]
-        };
-        store.dispatch(updateSession(session));
+          client: headers[CLIENT],
+        }
+        store.dispatch(updateSession(session))
       }
-      response.data = humps.camelizeKeys(data);
-      return response;
+      response.data = humps.camelizeKeys(data)
+      return response
     },
-    error => {
+    (error) => {
       if (error.response && error.response.status === UNAUTHORIZED) {
-        store.dispatch(logout());
+        store.dispatch(logout())
       }
 
-      return Promise.reject(error);
+      return Promise.reject(error)
     }
-  );
-};
+  )
+}

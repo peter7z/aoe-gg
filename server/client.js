@@ -1,25 +1,25 @@
-import React from 'react';
-import { hydrate } from 'react-dom';
-import { Provider } from 'react-redux';
-import { AppContainer } from 'react-hot-loader';
-import { IntlProvider } from 'react-intl';
-import includes from 'lodash/includes';
-import { PersistGate } from 'redux-persist/lib/integration/react';
-import configureStore from 'state/store/configureStore';
-import App from 'components/App';
-import locales from 'locales';
-import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants';
-import httpClient from 'httpClient';
-import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors';
-import 'styles/styles.scss';
+import React from 'react'
+import { hydrate } from 'react-dom'
+import { Provider } from 'react-redux'
+import { AppContainer } from 'react-hot-loader'
+import { IntlProvider } from 'react-intl'
+import includes from 'lodash/includes'
+import { PersistGate } from 'redux-persist/lib/integration/react'
+import configureStore from 'state/store/configureStore'
+import App from 'components/App'
+import locales from 'locales'
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from 'constants/constants'
+import httpClient from 'httpClient'
+import applyDefaultInterceptors from 'httpClient/applyDefaultInterceptors'
+import 'styles/styles.scss'
 
-require('../src/favicon.ico'); // Tell webpack to load favicon.ico
+require('../src/favicon.ico') // Tell webpack to load favicon.ico
 
 // Load service worker
 if (process.env.ENABLE_PWA) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/main-sw.js');
-  });
+    navigator.serviceWorker.register('/main-sw.js')
+  })
 }
 
 // Fix for browsers that don't implement Intl by default e.g.: Safari)
@@ -29,29 +29,29 @@ if (!window.Intl) {
       '@formatjs/intl-relativetimeformat',
       '@formatjs/intl-relativetimeformat/dist/include-aliases.js',
       '@formatjs/intl-relativetimeformat/dist/locale-data/en.js',
-      '@formatjs/intl-relativetimeformat/dist/locale-data/es.js'
+      '@formatjs/intl-relativetimeformat/dist/locale-data/es.js',
     ],
-    require => {
-      require('@formatjs/intl-relativetimeformat/polyfill');
-      require('@formatjs/intl-relativetimeformat/dist/include-aliases');
-      require('@formatjs/intl-relativetimeformat/dist/locale-data/en.js');
-      require('@formatjs/intl-relativetimeformat/dist/locale-data/es.js');
+    (require) => {
+      require('@formatjs/intl-relativetimeformat/polyfill')
+      require('@formatjs/intl-relativetimeformat/dist/include-aliases')
+      require('@formatjs/intl-relativetimeformat/dist/locale-data/en.js')
+      require('@formatjs/intl-relativetimeformat/dist/locale-data/es.js')
     }
-  );
+  )
 }
 
-const usersLocale = navigator.language.split('-')[0];
-const supportedUserLocale = includes(SUPPORTED_LANGUAGES, usersLocale);
-const locale = supportedUserLocale ? usersLocale : DEFAULT_LANGUAGE;
-const messages = locales[locale];
+const usersLocale = navigator.language.split('-')[0]
+const supportedUserLocale = includes(SUPPORTED_LANGUAGES, usersLocale)
+const locale = supportedUserLocale ? usersLocale : DEFAULT_LANGUAGE
+const messages = locales[locale]
 
 // Grab the state from a global variable injected into the server-generated HTML
-const preloadedState = window.__PRELOADED_STATE__;
-delete window.__PRELOADED_STATE__;
+const preloadedState = window.__PRELOADED_STATE__
+delete window.__PRELOADED_STATE__
 
-const { persistor, store } = configureStore(preloadedState);
+const { persistor, store } = configureStore(preloadedState)
 
-const renderApp = Component => {
+const renderApp = (Component) => {
   hydrate(
     <IntlProvider locale={locale} messages={messages} defaultLocale="en">
       <Provider store={store}>
@@ -63,12 +63,12 @@ const renderApp = Component => {
       </Provider>
     </IntlProvider>,
     document.getElementById('app')
-  );
-};
+  )
+}
 
-applyDefaultInterceptors(store, httpClient);
-renderApp(App);
+applyDefaultInterceptors(store, httpClient)
+renderApp(App)
 
 if (module.hot) {
-  module.hot.accept();
+  module.hot.accept()
 }

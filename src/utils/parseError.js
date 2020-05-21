@@ -1,28 +1,28 @@
-const parseErrors = errors => {
+const parseErrors = (errors) => {
   if (errors) {
-    const { fullMessages, base } = errors;
+    const { fullMessages, base } = errors
 
     if (fullMessages) {
-      const [firstMessage] = fullMessages;
-      return firstMessage;
+      const [firstMessage] = fullMessages
+      return firstMessage
     }
 
     if (base) {
-      const [firstMessage] = base;
-      return firstMessage;
+      const [firstMessage] = base
+      return firstMessage
     }
 
     if (Array.isArray(errors)) {
-      return errors[0];
+      return errors[0]
     }
 
-    const errorKey = Object.keys(errors)[0];
-    const error = errors[errorKey][0];
-    return `${errorKey} ${error}`;
+    const errorKey = Object.keys(errors)[0]
+    const error = errors[errorKey][0]
+    return `${errorKey} ${error}`
   }
 
-  return 'Something went wrong';
-};
+  return 'Something went wrong'
+}
 
 /**
  * Parses the body of an error response.
@@ -48,12 +48,12 @@ const parseErrors = errors => {
  *
  * 5- `{ errors: ['Some error'] }` returns `"Some error"`
  */
-export default data => {
-  if (!data) return 'Something went wrong';
+export default (data) => {
+  if (!data) return 'Something went wrong'
 
-  const { error, errors } = data;
+  const { error, errors } = data
 
-  if (error) return error;
+  if (error) return error
 
-  return parseErrors(errors);
-};
+  return parseErrors(errors)
+}

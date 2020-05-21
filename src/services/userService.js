@@ -1,17 +1,17 @@
-import httpClient from 'httpClient';
+import httpClient from 'httpClient'
 
 class UserService {
   static login(user) {
-    return httpClient.post('/users/sign_in', user);
+    return httpClient.post('/users/sign_in', user)
   }
 
   static logout() {
-    return httpClient.delete('/users/sign_out');
+    return httpClient.delete('/users/sign_out')
   }
 
   static signUp(user) {
-    return httpClient.post('/users', user);
+    return httpClient.post('/users', user)
   }
 }
 
-export default UserService;
+export default UserService

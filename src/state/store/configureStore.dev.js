@@ -2,42 +2,42 @@
 // This boilerplate file is likely to be the same for each project that uses Redux.
 // With Redux, the actual stores are in /reducers.
 
-import { createStore, compose, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
-import { persistStore } from 'redux-persist';
-import _ from 'lodash';
-import { routerMiddleware } from 'connected-react-router';
-import { thunkMiddleware } from '@rootstrap/redux-tools';
+import { createStore, compose, applyMiddleware } from 'redux'
+import { createLogger } from 'redux-logger'
+import { persistStore } from 'redux-persist'
+import _ from 'lodash'
+import { routerMiddleware } from 'connected-react-router'
+import { thunkMiddleware } from '@rootstrap/redux-tools'
 
-import history from 'utils/history';
-import rootReducer from 'state/reducers';
+import history from 'utils/history'
+import rootReducer from 'state/reducers'
 
 export default function configureStore(initialState) {
   const logger = createLogger({
     collapsed: true,
-    predicate: (getState, { type }) => !_.startsWith(type, '@@router')
-  });
+    predicate: (getState, { type }) => !_.startsWith(type, '@@router'),
+  })
 
-  const middlewares = [thunkMiddleware, logger, routerMiddleware(history)];
+  const middlewares = [thunkMiddleware, logger, routerMiddleware(history)]
 
   const store = createStore(
     rootReducer(history),
     initialState,
     compose(
       applyMiddleware(...middlewares),
-      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.window.__REDUX_DEVTOOLS_EXTENSION__() : f => f // add support for Redux dev tools
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f // add support for Redux dev tools
     )
-  );
+  )
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
     module.hot.accept('../reducers', () => {
-      const nextReducer = require('../reducers').default; // eslint-disable-line global-require
-      store.replaceReducer(nextReducer);
-    });
+      const nextReducer = require('../reducers').default // eslint-disable-line global-require
+      store.replaceReducer(nextReducer)
+    })
   }
 
-  const persistor = persistStore(store);
+  const persistor = persistStore(store)
 
-  return { store, persistor };
+  return { store, persistor }
 }

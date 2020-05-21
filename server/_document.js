@@ -1,11 +1,11 @@
 /* eslint-disable react/no-danger */
 
-import React from 'react';
-import { object, string, node } from 'prop-types';
+import React from 'react'
+import { object, string, node } from 'prop-types'
 
 const Document = ({ helmet, assets, styleTags, preloadedState }) => {
-  const htmlAttrs = helmet.htmlAttributes.toComponent();
-  const bodyAttrs = helmet.bodyAttributes.toComponent();
+  const htmlAttrs = helmet.htmlAttributes.toComponent()
+  const bodyAttrs = helmet.bodyAttributes.toComponent()
 
   return (
     <html lang="en" {...htmlAttrs}>
@@ -24,20 +24,20 @@ const Document = ({ helmet, assets, styleTags, preloadedState }) => {
         <script
           id="redux-state"
           dangerouslySetInnerHTML={{
-            __html: `window.__PRELOADED_STATE__=${preloadedState}`
+            __html: `window.__PRELOADED_STATE__=${preloadedState}`,
           }}
         />
         <script type="text/javascript" src={assets.main.js} defer crossOrigin="anonymous" />
       </body>
     </html>
-  );
-};
+  )
+}
 
 Document.propTypes = {
   helmet: object.isRequired,
   assets: object.isRequired,
   preloadedState: string.isRequired,
-  styleTags: node.isRequired
-};
+  styleTags: node.isRequired,
+}
 
-export default Document;
+export default Document

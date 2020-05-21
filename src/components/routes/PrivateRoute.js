@@ -1,11 +1,11 @@
-import React from 'react';
-import { bool, string, node } from 'prop-types';
-import { Route, Redirect, useLocation } from 'react-router-dom';
+import React from 'react'
+import { bool, string, node } from 'prop-types'
+import { Route, Redirect, useLocation } from 'react-router-dom'
 
-import routes from 'constants/routesPaths';
+import routes from 'constants/routesPaths'
 
 const PrivateRoute = ({ children, exact = false, path, authenticated }) => {
-  const location = useLocation();
+  const location = useLocation()
 
   return authenticated ? (
     <Route exact={exact} path={path}>
@@ -15,17 +15,17 @@ const PrivateRoute = ({ children, exact = false, path, authenticated }) => {
     <Redirect
       to={{
         pathname: routes.login,
-        state: { from: location }
+        state: { from: location },
       }}
     />
-  );
-};
+  )
+}
 
 PrivateRoute.propTypes = {
   children: node.isRequired,
   path: string.isRequired,
   authenticated: bool.isRequired,
-  exact: bool
-};
+  exact: bool,
+}
 
-export default PrivateRoute;
+export default PrivateRoute

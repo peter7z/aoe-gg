@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   extensions: ['*', '.js', '.jsx', '.json'],
@@ -19,6 +19,6 @@ module.exports = {
     fixtures: path.resolve(__dirname, '../../cypress/fixtures'),
     stubs: path.resolve(__dirname, '../../cypress/stubs'),
     cypressConstants: path.resolve(__dirname, '../../cypress/support/constants'),
-    reusableTests: path.resolve(__dirname, '../../cypress/support/reusableTests')
-  }
-};
+    reusableTests: path.resolve(__dirname, '../../cypress/support/reusableTests'),
+  },
+}

@@ -1,13 +1,13 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { IntlProvider } from 'react-intl';
-import { MemoryRouter } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { IntlProvider } from 'react-intl'
+import { MemoryRouter } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 
-import locales from 'locales';
-import theme from 'constants/theme';
+import locales from 'locales'
+import theme from 'constants/theme'
 
-const messages = locales.en;
+const messages = locales.en
 
 export const withStore = (WrappedComponent, store) => (
   <MemoryRouter>
@@ -17,4 +17,4 @@ export const withStore = (WrappedComponent, store) => (
       </IntlProvider>
     </ThemeProvider>
   </MemoryRouter>
-);
+)

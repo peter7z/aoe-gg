@@ -1,14 +1,14 @@
-import { createBrowserHistory, createMemoryHistory } from 'history';
+import { createBrowserHistory, createMemoryHistory } from 'history'
 
-let instance;
+let instance
 
 class History {
   constructor() {
     if (!instance) {
-      instance = process.env.BROWSER ? createBrowserHistory() : createMemoryHistory();
+      instance = process.env.BROWSER ? createBrowserHistory() : createMemoryHistory()
     }
-    return instance;
+    return instance
   }
 }
 
-export default new History();
+export default new History()

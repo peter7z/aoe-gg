@@ -1,18 +1,18 @@
-import React from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { ThemeProvider } from 'styled-components';
+import React from 'react'
+import { ConnectedRouter } from 'connected-react-router'
+import { Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import { ThemeProvider } from 'styled-components'
 
-import { useSession } from 'hooks';
-import history from 'utils/history';
-import RouteFromPath from 'components/routes/RouteFromPath';
-import routes from '../routes';
-import theme from '../constants/theme';
-import Header from './common/Header';
+import { useSession } from 'hooks'
+import history from 'utils/history'
+import RouteFromPath from 'components/routes/RouteFromPath'
+import routes from '../routes'
+import theme from '../constants/theme'
+import Header from './common/Header'
 
 const App = () => {
-  const { authenticated } = useSession();
+  const { authenticated } = useSession()
 
   return (
     <ThemeProvider theme={theme}>
@@ -30,7 +30,7 @@ const App = () => {
         </ConnectedRouter>
       </>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

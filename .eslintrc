@@ -54,7 +54,6 @@
     "no-multi-spaces": 1,
     "block-spacing": 1,
     "brace-style": 1,
-    "comma-dangle": 0,
     "comma-spacing": [1, { "before": false, "after": true }],
     "comma-style": 1,
     "key-spacing": 1,
@@ -108,7 +107,6 @@
     "react/jsx-props-no-spreading": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "arrow-parens": 0
   },
   "settings": {
     "import/resolver": {

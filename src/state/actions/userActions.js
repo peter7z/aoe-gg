@@ -1,33 +1,33 @@
-import { createThunk, createAction } from '@rootstrap/redux-tools';
-import userService from 'services/userService';
-import parseError from 'utils/parseError';
+import { createThunk, createAction } from '@rootstrap/redux-tools'
+import userService from 'services/userService'
+import parseError from 'utils/parseError'
 
-export const login = createThunk('LOGIN', async user => {
+export const login = createThunk('LOGIN', async (user) => {
   try {
     const {
-      data: { data }
-    } = await userService.login({ user });
-    return data;
+      data: { data },
+    } = await userService.login({ user })
+    return data
   } catch ({ response: { data } }) {
-    throw parseError(data);
+    throw parseError(data)
   }
-});
+})
 
 export const logout = createThunk('LOGOUT', async () => {
   try {
-    await userService.logout();
+    await userService.logout()
   } catch ({ response: { data } }) {
-    throw parseError(data);
+    throw parseError(data)
   }
-});
+})
 
-export const signUp = createThunk('SIGNUP', async user => {
+export const signUp = createThunk('SIGNUP', async (user) => {
   try {
-    const { data } = await userService.signUp({ user });
-    return data;
+    const { data } = await userService.signUp({ user })
+    return data
   } catch ({ response: { data } }) {
-    throw parseError(data);
+    throw parseError(data)
   }
-});
+})
 
-export const updateSession = createAction('UPDATE_SESSION');
+export const updateSession = createAction('UPDATE_SESSION')

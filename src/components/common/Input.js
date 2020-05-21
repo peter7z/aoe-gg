@@ -1,8 +1,8 @@
-import React from 'react';
-import { string, arrayOf } from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import React from 'react'
+import { string, arrayOf } from 'prop-types'
+import { FormattedMessage } from 'react-intl'
 
-import { parseInputErrors } from 'utils/helpers';
+import { parseInputErrors } from 'utils/helpers'
 
 const Input = ({ label, name, errors, ...props }) => {
   return (
@@ -20,13 +20,13 @@ const Input = ({ label, name, errors, ...props }) => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Input.propTypes = {
   name: string.isRequired,
   label: string,
-  errors: arrayOf(string)
-};
+  errors: arrayOf(string),
+}
 
-export default Input;
+export default Input

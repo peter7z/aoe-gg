@@ -1,15 +1,15 @@
-import React from 'react';
-import { Switch } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { ThemeProvider } from 'styled-components';
-import { useSession } from 'hooks';
+import React from 'react'
+import { Switch } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
+import { ThemeProvider } from 'styled-components'
+import { useSession } from 'hooks'
 
-import RouteFromPath from 'components/routes/RouteFromPath';
-import routes from '../src/routes';
-import theme from '../src/constants/theme';
+import RouteFromPath from 'components/routes/RouteFromPath'
+import routes from '../src/routes'
+import theme from '../src/constants/theme'
 
 const App = () => {
-  const { authenticated } = useSession();
+  const { authenticated } = useSession()
 
   return (
     <ThemeProvider theme={theme}>
@@ -24,7 +24,7 @@ const App = () => {
         </Switch>
       </>
     </ThemeProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

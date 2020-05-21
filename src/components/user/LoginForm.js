@@ -1,38 +1,38 @@
-import React, { memo } from 'react';
-import { func } from 'prop-types';
-import { useIntl, defineMessages, FormattedMessage } from 'react-intl';
-import { useStatus, ERROR, LOADING } from '@rootstrap/redux-tools';
+import React, { memo } from 'react'
+import { func } from 'prop-types'
+import { useIntl, defineMessages, FormattedMessage } from 'react-intl'
+import { useStatus, ERROR, LOADING } from '@rootstrap/redux-tools'
 
-import Loading from 'components/common/Loading';
-import Input from 'components/common/Input';
-import { login as loginValidations } from 'utils/constraints';
-import { useForm, useValidation, useTextInputProps } from 'hooks';
-import { login } from 'state/actions/userActions';
+import Loading from 'components/common/Loading'
+import Input from 'components/common/Input'
+import { login as loginValidations } from 'utils/constraints'
+import { useForm, useValidation, useTextInputProps } from 'hooks'
+import { login } from 'state/actions/userActions'
 
 const messages = defineMessages({
   email: { id: 'login.form.email' },
-  password: { id: 'login.form.password' }
-});
+  password: { id: 'login.form.password' },
+})
 
 const fields = {
   email: 'email',
-  password: 'password'
-};
+  password: 'password',
+}
 
 export const LoginForm = ({ onSubmit }) => {
-  const intl = useIntl();
-  const { status, error } = useStatus(login);
-  const validator = useValidation(loginValidations);
+  const intl = useIntl()
+  const { status, error } = useStatus(login)
+  const validator = useValidation(loginValidations)
   const { values, errors, handleValueChange, handleSubmit, handleBlur } = useForm(
     {
       onSubmit,
       validator,
-      validateOnBlur: true
+      validateOnBlur: true,
     },
     [onSubmit]
-  );
+  )
 
-  const inputProps = useTextInputProps({ handleValueChange, handleBlur, values, errors });
+  const inputProps = useTextInputProps({ handleValueChange, handleBlur, values, errors })
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,11 +58,11 @@ export const LoginForm = ({ onSubmit }) => {
       </button>
       {status === LOADING && <Loading />}
     </form>
-  );
-};
+  )
+}
 
 LoginForm.propTypes = {
-  onSubmit: func.isRequired
-};
+  onSubmit: func.isRequired,
+}
 
-export default memo(LoginForm);
+export default memo(LoginForm)
