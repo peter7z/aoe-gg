@@ -16,8 +16,8 @@ const PlayerPage = () => {
   const player = usePlayer()
 
   return (
-    <div className="container">
-      <Profile image={player.avatarUrl} name={player.gamertag} />
+    <div className="container pb-4 mb-4">
+      {player && <Profile image={player.avatarUrl} name={player.gamertag} />}
       {winRateByMap && <RateByMap rateByMap={winRateByMap} />}
     </div>
   )

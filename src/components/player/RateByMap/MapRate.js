@@ -7,10 +7,10 @@ const RateByMap = ({ map, wins, looses }) => {
   const rate = Math.floor((wins / (looses + wins)) * 100)
 
   return (
-    <div className="row p-4 border" key="map">
-      <div className="col-4">{map}: </div>
+    <div className="row p-4 border col-md-6" key="map">
+      <div className="col-6">{map}: </div>
       <div className="col-6 d-flex no-gutters">
-        <div className="d-flex col-9 text-light mr-4">
+        <div className="d-flex col text-light mr-4">
           <div className="rounded overflow-hidden w-100 d-flex">
             {!!wins && (
               <div
@@ -30,7 +30,7 @@ const RateByMap = ({ map, wins, looses }) => {
             )}
           </div>
         </div>
-        <div className="col">{rate}%</div>
+        <div className="col-1 mr-2">{rate}%</div>
       </div>
     </div>
   )

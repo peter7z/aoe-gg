@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import 'normalize.css'
+
 import { useSession } from 'hooks'
 import history from 'utils/history'
 import RouteFromPath from 'components/routes/RouteFromPath'
