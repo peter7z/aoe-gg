@@ -3,12 +3,24 @@ import { useParams } from 'react-router-dom'
 
 import { getPlayer } from 'state/actions/playerActions'
 import { useDispatchOnMount } from 'hooks'
+import { useWinRateByMap, usePlayer } from 'hooks/players'
 
-const HomePage = () => {
+import RateByMap from 'components/player/RateByMap'
+import Profile from 'components/player/Profile'
+
+const PlayerPage = () => {
   const { id } = useParams()
   useDispatchOnMount(getPlayer, Number(id))
 
-  return <div />
+  const winRateByMap = useWinRateByMap()
+  const player = usePlayer()
+
+  return (
+    <div className="container">
+      <Profile image={player.avatarUrl} name={player.gamertag} />
+      {winRateByMap && <RateByMap rateByMap={winRateByMap} />}
+    </div>
+  )
 }
 
-export default HomePage
+export default PlayerPage

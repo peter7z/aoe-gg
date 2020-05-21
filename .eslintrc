@@ -4,7 +4,7 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "airbnb",
-    "prettier",
+    "plugin:prettier/recommended",
     "prettier/react"
   ],
   "plugins": [

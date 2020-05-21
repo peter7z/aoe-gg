@@ -3,6 +3,8 @@ const theme = {
   colors: {
     white: '#ffffff',
     purple: '#79589f',
+    red: '#ee5a52',
+    blue: '#3d95e5',
   },
   // fonts
   fontWeights: {

@@ -1,11 +1,15 @@
 import { createReducer } from '@rootstrap/redux-tools'
 import { getPlayer } from 'state/actions/playerActions'
 
-const initialState = {}
+const initialState = {
+  playerList: {},
+  currentPlayer: '',
+}
 
 const actionHandlers = {
   [getPlayer.success]: (state, { payload: { playerId, user, matchList } }) => {
-    state[playerId] = {
+    state.currentPlayer = playerId
+    state.playerList[playerId] = {
       user,
       matchList,
     }

@@ -3,6 +3,7 @@ import { ConnectedRouter } from 'connected-react-router'
 import { Switch } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
 import { ThemeProvider } from 'styled-components'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { useSession } from 'hooks'
 import history from 'utils/history'

@@ -6,7 +6,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2'
 
 import { statusReducer } from '@rootstrap/redux-tools'
 import session from './sessionReducer'
-import player from './playerReducer'
+import players from './playersReducer'
 
 const sessionPersistConfig = {
   key: 'session',
@@ -20,7 +20,7 @@ const rootReducer = (history) =>
     session: persistReducer(sessionPersistConfig, session),
     router: connectRouter(history),
     actionStatus: statusReducer,
-    player,
+    players,
   })
 
 export default rootReducer

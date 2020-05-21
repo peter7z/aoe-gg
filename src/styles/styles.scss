@@ -50,3 +50,21 @@ body {
     width: 150px;
   }
 }
+
+
+.absolute-fill {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.opacity-20 {
+  opacity: 0.2;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
