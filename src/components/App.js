@@ -21,7 +21,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <>
         <Helmet>
-          <title>RS React Redux Base</title>
+          <title>AOE stats</title>
         </Helmet>
         <Header />
         <ConnectedRouter history={history}>

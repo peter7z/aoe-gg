@@ -83,7 +83,7 @@ export default {
         minRatio: 2,
       }),
 
-    new Dotenv({ path: envPath }),
+    new Dotenv({ path: envPath, systemvars: true }),
   ].filter(Boolean),
   module: {
     rules: [
