@@ -7,7 +7,7 @@ const RateByMap = ({ map, wins, looses }) => {
   const rate = Math.floor((wins / (looses + wins)) * 100)
 
   return (
-    <div className="row p-4 border col-md-6" key="map">
+    <div className="row no-gutters p-4 border col-lg-8 offset-lg-2" key="map">
       <div className="col-6">{map}: </div>
       <div className="col-6 d-flex no-gutters">
         <div className="d-flex col text-light mr-4">

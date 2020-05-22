@@ -1,32 +1,11 @@
-import React, { useCallback, useState } from 'react'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
+import React from 'react'
 
-import { useHistory } from 'react-router-dom'
+import SearchBox from 'components/player/SearchBox'
 
-const HomePage = () => {
-  const { push } = useHistory()
-
-  const [playerId, setPlayerId] = useState('')
-
-  const handleClick = useCallback(async () => {
-    push(`/player/${playerId}`)
-  }, [playerId, push])
-
-  const handleChange = useCallback((e) => {
-    setPlayerId(e.target.value)
-  }, [])
-
-  return (
-    <div className="center absolute-fill bg-dark position-absolute flex-column">
-      <div className="bg-white p-5 rounded d-flex flex-column">
-        <TextField className="mb-5" value={playerId} onChange={handleChange} label="Player id" />
-        <Button onClick={handleClick} disabled={!playerId} variant="contained">
-          GET HISTORY
-        </Button>
-      </div>
-    </div>
-  )
-}
+const HomePage = () => (
+  <div className="center absolute-fill bg-dark position-absolute flex-column">
+    <SearchBox />
+  </div>
+)
 
 export default HomePage

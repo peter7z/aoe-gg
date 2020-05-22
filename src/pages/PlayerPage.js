@@ -9,6 +9,7 @@ import { useWinRateByMap, usePlayer } from 'hooks/players'
 
 import RateByMap from 'components/player/RateByMap'
 import Profile from 'components/player/Profile'
+import SearchBox from 'components/player/SearchBox'
 
 const PlayerPage = () => {
   const { id } = useParams()
@@ -26,8 +27,12 @@ const PlayerPage = () => {
           </div>
         </div>
       )}
-      {!player && <Loader type="pacman" />}
-      {player && <Profile image={player.avatarUrl} name={player.gamertag} />}
+      {player && (
+        <div className="bg-dark p-4 rounded mb-5 d-flex justify-content-between col-lg-8 offset-lg-2">
+          <Profile image={player.avatarUrl} name={player.gamertag} />
+          <SearchBox />
+        </div>
+      )}
       {winRateByMap && <RateByMap rateByMap={winRateByMap} />}
     </div>
   )
