@@ -9,6 +9,7 @@ import CompressionPlugin from 'compression-webpack-plugin'
 import { GenerateSW } from 'workbox-webpack-plugin'
 import dotenv from 'dotenv'
 import CopyPlugin from 'copy-webpack-plugin'
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin'
 
 import resolve from './shared/resolve'
 
@@ -91,6 +92,7 @@ export default {
         concurrency: 100,
       },
     }),
+    new FaviconsWebpackPlugin(path.resolve(__dirname, '../src/assets/favicon.png')),
   ].filter(Boolean),
   module: {
     rules: [
