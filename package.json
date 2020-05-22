@@ -1,10 +1,10 @@
 {
   "name": "react-redux-base",
   "version": "0.1.0",
-  "description": "Rootstrap React Redux Base",
+  "description": "Aoe stats",
   "engines": {
     "npm": ">4",
-    "node": "10.16.0"
+    "node": "12.16.3"
   },
   "scripts": {
     "preinstall": "node tools/nodeVersionCheck.js",
@@ -214,13 +214,8 @@
     "coverageDirectory": "coverage_jest"
   },
   "keywords": [
-    "react",
-    "redux",
-    "base",
-    "starter",
-    "kit",
-    "rootstrap",
-    "boilerplate"
+    "aoe",
+    "age of empires"
   ],
   "repository": {
     "type": "git",
