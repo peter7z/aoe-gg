@@ -1,5 +1,6 @@
 import React from 'react'
-import { arrayOf, object } from 'prop-types'
+import { arrayOf, object, oneOfType, string } from 'prop-types'
+import cn from 'classnames'
 
 import MapRate from './MapRate'
 
@@ -9,8 +10,9 @@ const sortByRate = ([, rateA], [, rateB]) => {
   return 0
 }
 
-const RateByMap = ({ rateByMap }) => (
-  <div>
+const RateByMap = ({ rateByMap, className }) => (
+  <div className={cn(['py-4', className])}>
+    <h2 className="mb-4">Map</h2>
     {rateByMap.sort(sortByRate).map(([map, { wins, looses }]) => (
       <MapRate key={map} map={map} wins={wins} looses={looses} />
     ))}
@@ -18,7 +20,8 @@ const RateByMap = ({ rateByMap }) => (
 )
 
 RateByMap.propTypes = {
-  rateByMap: arrayOf(object).isRequired,
+  rateByMap: arrayOf(arrayOf(oneOfType([string.isRequired, object]))).isRequired,
+  className: string,
 }
 
 export default RateByMap

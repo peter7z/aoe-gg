@@ -3,12 +3,12 @@ import { string, number } from 'prop-types'
 
 import theme from 'constants/theme'
 
-const RateByMap = ({ map, wins, looses }) => {
+const CivRate = ({ civ, wins, looses }) => {
   const rate = Math.floor((wins / (looses + wins)) * 100)
 
   return (
     <div className="row no-gutters p-4 border" key="map">
-      <div className="col-6">{map}: </div>
+      <div className="col-6">{civ}: </div>
       <div className="col-6 d-flex no-gutters">
         <div className="d-flex col text-light mr-4">
           <div className="rounded overflow-hidden w-100 d-flex">
@@ -36,10 +36,10 @@ const RateByMap = ({ map, wins, looses }) => {
   )
 }
 
-RateByMap.propTypes = {
-  map: string.isRequired,
+CivRate.propTypes = {
+  civ: string.isRequired,
   wins: number.isRequired,
   looses: number.isRequired,
 }
 
-export default RateByMap
+export default CivRate

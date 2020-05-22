@@ -8,6 +8,7 @@ import path from 'path'
 import CompressionPlugin from 'compression-webpack-plugin'
 import { GenerateSW } from 'workbox-webpack-plugin'
 import dotenv from 'dotenv'
+import CopyPlugin from 'copy-webpack-plugin'
 
 import resolve from './shared/resolve'
 
@@ -84,6 +85,12 @@ export default {
       }),
 
     new Dotenv({ path: envPath, systemvars: true }),
+    new CopyPlugin({
+      patterns: [{ from: path.resolve(__dirname, '../src/public/*'), flatten: true }],
+      options: {
+        concurrency: 100,
+      },
+    }),
   ].filter(Boolean),
   module: {
     rules: [

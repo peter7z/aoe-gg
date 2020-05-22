@@ -5,9 +5,10 @@ import 'loaders.css/src/animations/pacman.scss'
 
 import { getPlayer } from 'state/actions/playerActions'
 import { useDispatchOnMount } from 'hooks'
-import { useWinRateByMap, usePlayer } from 'hooks/players'
+import { useWinRateByCiv, useWinRateByMap, usePlayer } from 'hooks/players'
 
 import RateByMap from 'components/player/RateByMap'
+import RateByCiv from 'components/player/RateByCiv'
 import Profile from 'components/player/Profile'
 import SearchBox from 'components/player/SearchBox'
 
@@ -16,6 +17,7 @@ const PlayerPage = () => {
   useDispatchOnMount(getPlayer, Number(id))
 
   const winRateByMap = useWinRateByMap()
+  const winRateByCiv = useWinRateByCiv()
   const player = usePlayer()
 
   return (
@@ -28,12 +30,17 @@ const PlayerPage = () => {
         </div>
       )}
       {player && (
-        <div className="bg-dark p-4 rounded mb-5 d-flex justify-content-between col-lg-8 offset-lg-2">
-          <Profile image={player.avatarUrl} name={player.gamertag} />
-          <SearchBox />
+        <div className="bg-dark rounded p-3 row no-gutters align-items-center">
+          <Profile className="col-12 col-lg" image={player.avatarUrl} name={player.gamertag} />
+          <div className="center col-12 col-lg">
+            <SearchBox className="col col-lg-8 offset-lg-4" />
+          </div>
         </div>
       )}
-      {winRateByMap && <RateByMap rateByMap={winRateByMap} />}
+      <div className="row">
+        {winRateByMap && <RateByMap className="col-12 col-lg" rateByMap={winRateByMap} />}
+        {winRateByCiv && <RateByCiv className="col-12 col-lg" rateByCiv={winRateByCiv} />}
+      </div>
     </div>
   )
 }
